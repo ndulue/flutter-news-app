@@ -22,7 +22,7 @@ class _HomeState extends State<Home> {
     // TODO: implement initState
     super.initState();
     categories = getCategory();
-    //getNews();
+    getNews();
   }
 
   getNews() async{
@@ -30,7 +30,7 @@ class _HomeState extends State<Home> {
     await newsClass.getNews();
     article = newsClass.news;
     setState(() {
-      _loading = true;
+      _loading = false;
     });
   }
 
@@ -57,11 +57,11 @@ class _HomeState extends State<Home> {
 
       ),
       body:
-      //_loading ? Center(
-        //child: Container(
-         // child: CircularProgressIndicator(),
-        //),
-      //) :
+      _loading ? Center(
+        child: Container(
+          child: CircularProgressIndicator(),
+        ),
+      ) :
       SingleChildScrollView(
         child: Container(
           child: Column(
@@ -76,16 +76,16 @@ class _HomeState extends State<Home> {
                     scrollDirection: Axis.horizontal,
                     itemBuilder: (context, index){
                       return CardTile(
-                        cardName: categories[index].imageUrl,
-                        imageUrl: categories[index].categoryName,
+                        cardName: categories[index].categoryName,
+                        imageUrl: categories[index].imageUrl,
                       );
                     }
                 ),
               ),
 
               //blog
-              /*Container(
-                padding: EdgeInsets.only(top: 16),
+              Container(
+                padding: EdgeInsets.only(top: 16, left: 16, right: 16),
                 child: ListView.builder(
                   itemCount: article.length,
                   shrinkWrap: true,
@@ -99,7 +99,7 @@ class _HomeState extends State<Home> {
                     );
                   },
                 ),
-              )*/
+              )
             ],
           ),
         ),

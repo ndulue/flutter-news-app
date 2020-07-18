@@ -40,12 +40,17 @@ class _CategoryNewsState extends State<CategoryNews> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Flutter"),
+            Text("Naija ",style: TextStyle(
+                color: Colors.black
+              ),
+            ),
             Text("News", style: TextStyle(
-                color: Colors.blue
-            ),)
+                color: Colors.purple[300]
+              ),
+            )
           ],
         ),
+        backgroundColor: Colors.transparent,
         actions: <Widget>[
           Opacity(
             opacity: 0,
@@ -67,7 +72,7 @@ class _CategoryNewsState extends State<CategoryNews> {
           child: Column(
             children: <Widget>[
               Container(
-                padding: EdgeInsets.only(top: 16),
+                padding: EdgeInsets.only(top: 16, left: 16, right: 16),
                 child: ListView.builder(
                   itemCount: articles.length,
                   shrinkWrap: true,

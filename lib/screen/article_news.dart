@@ -22,13 +22,17 @@ class _ArticleViewState extends State<ArticleView> {
         title: Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text("Flutter"),
+            Text("Naija ",style: TextStyle(
+                color: Colors.black
+            ),
+            ),
             Text("News", style: TextStyle(
-                color: Colors.blue
+                color: Colors.purple[300]
             ),
             )
           ],
         ),
+        backgroundColor: Colors.transparent,
         actions: <Widget>[
           Opacity(
             opacity: 0,
@@ -43,11 +47,14 @@ class _ArticleViewState extends State<ArticleView> {
       body: Container(
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
-        child: WebView(
-          initialUrl: widget.blogUrl,
-          onWebViewCreated: ((WebViewController webViewController){
-            _completer.complete(webViewController);
-          }),
+        child: Padding(
+          padding: EdgeInsets.only(left: 16, right: 16),
+          child: WebView(
+            initialUrl: widget.blogUrl,
+            onWebViewCreated: ((WebViewController webViewController){
+              _completer.complete(webViewController);
+            }),
+          ),
         ),
       ),
     );
